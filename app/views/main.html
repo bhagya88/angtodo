@@ -1,0 +1,58 @@
+<div class="container" ng-controller="MainCtrl as todoCtrl">
+	<section id="todoapp">
+		
+		
+		<header id="header">
+			<h1>todos</h1>
+			<form ng-submit="todoCtrl.addTodo()">
+				<input id="new-todo" ng-model="todoCtrl.newTodo" placeholder="What needs to be done?" autofocus="" ng-minlength="1" required>
+			</form>
+		</header>
+
+		<section id="main" style="display: block;">
+			<input type="checkbox" id="toggle-all" ng-model="todoCtrl.toggleAll" ng-change="todoCtrl.toggleStatusAll()" />
+			<label for="toggle-all">Mark all as complete</label>
+			
+			
+			<ul id="todo-list">
+				<li ng-repeat="todo in todoCtrl.storage.todos | filter:{done:todoCtrl.statusFilter} track by $index">
+					<div class="view">
+						<input class="toggle" type="checkbox" ng-model="todo.done">
+						<label>{{todo.task}}</label>
+						<button class="destroy" ng-click="todoCtrl.deleteTodo($index)"></button>
+					</div>
+					<input class="edit" value="tak1">
+				</li>
+
+			</ul>
+
+
+		</section>
+
+
+
+
+
+
+
+		<footer id="footer" style="display: block;">
+			<span id="todo-count"><strong>{{(todoCtrl.storage.todos | filter:{done:false}).length }} </strong> items left</span>
+			<ul id="filters">
+
+				<button ng-model="todoCtrl.all" ng-click="todoCtrl.statusFilter=''">All</button>
+				<button ng-model="todoCtrl.active" ng-click="todoCtrl.statusFilter='false'">Active</button>
+				<button ng-model="todoCtrl.completed" ng-click="todoCtrl.statusFilter='true'">Completed</button>
+				
+			</ul>
+			<button id="clear-completed" ng-click="todoCtrl.deleteCompleted()">Clear completed</button>
+		</footer>
+	</section>
+
+
+	<footer id="info">
+		<p>Double-click to edit a todo</p>
+		<p>Created by <a href="http://sindresorhus.com">Sindre                 Sorhus</a></p>
+		<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+	</footer>
+
+</div>

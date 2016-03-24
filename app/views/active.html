@@ -1,0 +1,10 @@
+              <li ng-repeat="todo in todoCtrl.todos | filter: {stat: 'todo'} track by $index">
+
+					<div class="view">
+						<input class="toggle" type="checkbox" ng-model="todoCtrl.todos[$index].stat" ng-checked=" todoCtrl.todos[$index].stat==='Completed'" ng-true-value="'Completed'"
+						ng-false-value="'todo'" ng-change="toggleStatus($index);$scope.$apply()">
+						<label>{{todo.task}}</label>
+						<button class="destroy" ng-click="todoCtrl.todos.splice($index, 1); $scope.$apply() "></button>
+					</div>
+					<input class="edit" value="tak1">
+				</li>
