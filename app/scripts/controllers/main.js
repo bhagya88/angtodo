@@ -20,7 +20,7 @@ angular.module('angtodoApp')
 
    this.statusFilter='';
  
-    //toggle status of all
+    //toggle status of all tasks
     this.toggleStatusAll = function () {
        angular.forEach(this.storage.todos,function (todo){
              todo.done=this.toggleAll;
